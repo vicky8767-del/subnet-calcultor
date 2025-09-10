@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNA Subnet Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CCNA Subnet Calculator</h1>
+            <nav>
+                <a href="index.html">IPv4 Calculator</a> |
+                <a href="ipv6.html">IPv6 Calculator</a>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="input-section">
+                <h2>Input</h2>
+                <form id="subnet-form">
+                    <div class="input-group">
+                        <label for="ip-address">IP Address:</label>
+                        <input type="text" id="ip-address" placeholder="e.g., 192.168.1.0">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="subnet-mask">Subnet Mask / CIDR:</label>
+                        <input type="text" id="subnet-mask" placeholder="e.g., 255.255.255.0 or /24">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="required-hosts">Required Hosts (optional):</label>
+                        <input type="number" id="required-hosts" placeholder="e.g., 50" min="1">
+                    </div>
+                    
+                    <button type="submit" id="calculate-btn">Calculate</button>
+                    <button type="button" id="random-practice">Random Practice</button>
+                </form>
+            </section>
+            
+            <section class="results-section">
+                <h2>Results</h2>
+                <div id="results">
+                    <table class="results-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Network ID:</strong></td>
+                                <td><span id="network-id">-</span></td>
+                                <td><strong>Broadcast Address:</strong></td>
+                                <td><span id="broadcast">-</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Host Range:</strong></td>
+                                <td colspan="3"><span id="host-range">-</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Hosts:</strong></td>
+                                <td><span id="total-hosts">-</span></td>
+                                <td><strong>Usable Hosts:</strong></td>
+                                <td><span id="usable-hosts">-</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Subnet Mask:</strong></td>
+                                <td><span id="subnet-mask-result">-</span></td>
+                                <td><strong>CIDR Notation:</strong></td>
+                                <td><span id="cidr-notation">-</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wildcard Mask:</strong></td>
+                                <td><span id="wildcard-mask">-</span></td>
+                                <td><strong>IP Class:</strong></td>
+                                <td><span id="ip-class">-</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>IP Type:</strong></td>
+                                <td colspan="3"><span id="ip-type">-</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="binary-view">
+                    <h3>Binary View</h3>
+                    <div id="binary-display">-</div>
+                </div>
+                
+                <div class="subnet-table">
+                    <h3>Subnet Table</h3>
+                    <table id="subnet-table-body">
+                        <thead>
+                            <tr>
+                                <th>Subnet</th>
+                                <th>Network ID</th>
+                                <th>Broadcast</th>
+                                <th>Host Range</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div class="actions">
+                    <button id="export-csv">Export to CSV</button>
+                    <button id="export-pdf">Export to PDF</button>
+                </div>
+            </section>
+            
+            <section class="subnet-suggestions-section">
+                <div id="subnet-suggestions"></div>
+            </section>
+
+
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
