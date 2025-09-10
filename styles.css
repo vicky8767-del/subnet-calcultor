@@ -728,3 +728,73 @@ tbody tr:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
 }
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+  body, .container {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .input-section, .results-section, .subnet-suggestions-section {
+    padding: 10px;
+  }
+
+  form#subnet-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form#subnet-form .input-group {
+    margin-bottom: 12px;
+  }
+
+  form#subnet-form label {
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  form#subnet-form input[type="text"],
+  form#subnet-form input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  form#subnet-form button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .results-table, .subnet-table table {
+    font-size: 12px;
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .results-table td, .subnet-table th, .subnet-table td {
+    padding: 6px 4px;
+  }
+
+  .binary-view, .subnet-table {
+    overflow-x: auto;
+  }
+
+  .suggestions-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .suggestion-card {
+    margin-bottom: 12px;
+  }
+}
