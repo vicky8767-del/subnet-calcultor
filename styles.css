@@ -828,3 +828,41 @@ tbody tr:hover {
       color: var(--primary-color);
   }
 }
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-top: 2px solid var(--border-color);
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+footer p:first-child {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+footer p:first-child::before {
+    content: '❤️ ';
+}
+
+footer p:first-child::after {
+    content: ' ❤️';
+}
+
+footer p:nth-child(n+2) {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    font-style: italic;
+}
