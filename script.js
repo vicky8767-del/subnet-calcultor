@@ -40,24 +40,25 @@
         if (firstOctet >= 128 && firstOctet <= 191) return 'B';
         if (firstOctet >= 192 && firstOctet <= 223) return 'C';
         if (firstOctet >= 224 && firstOctet <= 239) return 'D (Multicast)';
-        if (firstOctet >= 240 && firstOctet <= 254) return 'E (Experimental)';
+        if (firstOctet >= 240 && firstOctet <= 255) return 'E (Experimental)';
         return 'Unknown';
     }
 
     function getIpType(ip) {
         const intIp = ipToInt(ip);
-        // Private ranges
-        if (intIp >= ipToInt('10.0.0.0') && intIp <= ipToInt('10.255.255.255')) return 'Private';
-        if (intIp >= ipToInt('172.16.0.0') && intIp <= ipToInt('172.31.255.255')) return 'Private';
-        if (intIp >= ipToInt('192.168.0.0') && intIp <= ipToInt('192.168.255.255')) return 'Private';
+        // Private ranges for Class A, B, C
+        const ipClass = getIpClass(ip);
+        if (ipClass === 'A' && intIp >= ipToInt('10.0.0.0') && intIp <= ipToInt('10.255.255.255')) return 'Private';
+        if (ipClass === 'B' && intIp >= ipToInt('172.16.0.0') && intIp <= ipToInt('172.31.255.255')) return 'Private';
+        if (ipClass === 'C' && intIp >= ipToInt('192.168.0.0') && intIp <= ipToInt('192.168.255.255')) return 'Private';
         // Loopback
         if (intIp >= ipToInt('127.0.0.0') && intIp <= ipToInt('127.255.255.255')) return 'Loopback';
         // Link-local
         if (intIp >= ipToInt('169.254.0.0') && intIp <= ipToInt('169.254.255.255')) return 'Link-local';
         // Multicast (Class D)
-        if (intIp >= ipToInt('224.0.0.0') && intIp <= ipToInt('239.255.255.255')) return 'Private';
-        // Reserved (Class E)
-        if (intIp >= ipToInt('240.0.0.0') && intIp <= ipToInt('255.255.255.254')) return 'Private';
+        if (ipClass === 'D') return 'Multicast';
+        // Experimental (Class E)
+        if (ipClass === 'E') return 'Experimental';
         return 'Public';
     }
 
@@ -332,6 +333,19 @@
         const cidr = Math.floor(Math.random() * 16) + 16; // /16 to /31
         return { ip, cidr };
     }
+
+    // Expose utility functions globally for use by other scripts
+    window.subnetUtils = {
+        ipToInt,
+        intToIp,
+        isValidIp,
+        cidrToMask,
+        maskToCidr,
+        wildcardMask,
+        getIpClass,
+        getIpType,
+        calculateSubnet
+    };
 
     // Event listeners
     document.getElementById('subnet-form').addEventListener('submit', e => {

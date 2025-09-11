@@ -1,0 +1,181 @@
+/* Subnetting Info Page Styles - Consistent with main site */
+
+section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInUp 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--gradient-secondary);
+    border-radius: 2px;
+}
+
+section p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--light-text);
+    text-align: center;
+}
+
+section ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+section ul li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    padding-left: 1.5rem;
+    text-align: center;
+}
+
+section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+section ul li:last-child {
+    border-bottom: none;
+}
+
+.example-box {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.example-box strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.subnet-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--light-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.subnet-table th {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.subnet-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.subnet-table tbody tr:nth-child(even) {
+    background: rgba(79, 70, 229, 0.05);
+}
+
+.subnet-table tbody tr:hover {
+    background: rgba(79, 70, 229, 0.05);
+    transition: background 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    section h2 {
+        font-size: 1.3rem;
+    }
+
+    .subnet-table {
+        font-size: 0.8rem;
+    }
+
+    .subnet-table th,
+    .subnet-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .example-box {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 1rem;
+        border-radius: var(--radius-md);
+    }
+
+    section h2 {
+        font-size: 1.2rem;
+    }
+
+    .subnet-table {
+        font-size: 0.75rem;
+    }
+
+    .subnet-table th,
+    .subnet-table td {
+        padding: 0.5rem 0.25rem;
+    }
+}

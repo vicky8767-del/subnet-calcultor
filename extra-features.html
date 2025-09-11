@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Subnetting Tools - CCNA Practice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="extra-features.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Subnetting Tools</h1>
+            <nav>
+                <a href="index.html">Basic Calculator</a> |
+                <a href="ipv6.html">IPv6 Calculator</a> |
+                <a href="extra-features.html" class="active">Advanced Tools</a> |
+                <a href="subnetting-info.html">Subnetting Basics</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Tool Selector -->
+            <section class="tool-selector">
+                <h2>Choose Your Tool</h2>
+                <div class="tool-buttons">
+                <button id="subnet-from-subnets" class="tool-btn active">Subnet from Required Subnets</button>
+                <button id="route-summarization" class="tool-btn">Route Summarization</button>
+                <button id="acl-wildcard" class="tool-btn">ACL Wildcard Generator</button>
+                <button id="quiz-mode" class="tool-btn">Quiz Mode</button>
+                <button id="subnet-table" class="tool-btn">Subnet Allocation Table</button>
+                <button id="vlsm-calculator" class="tool-btn">VLSM Calculator</button>
+                <button id="ip-binary-converter" class="tool-btn">IP Binary Converter</button>
+                <button id="ospf-network-type" class="tool-btn">OSPF Network Type Tool</button>
+                <button id="dhcp-scope-calculator" class="tool-btn">DHCP Scope Calculator</button>
+                <button id="hex-ip-converter" class="tool-btn">Hex/IP Converter</button>
+                <button id="nat-calculator" class="tool-btn">NAT Calculator</button>
+                <button id="ipv4-ipv6-converter" class="tool-btn">IPv4/IPv6 Converter</button>
+                <button id="network-speed-calculator" class="tool-btn">Network Speed Calculator</button>
+                <button id="tcp-flags-calculator" class="tool-btn">TCP Flags Calculator</button>
+                <button id="network-troubleshooter" class="tool-btn">Network Troubleshooter</button>
+                </div>
+            </section>
+
+            <!-- Subnet from Required Subnets Tool -->
+            <section id="subnet-from-subnets-section" class="tool-section active">
+                <h2>Calculate Subnet Mask from Required Subnets</h2>
+                <form id="subnet-from-subnets-form">
+                    <div class="input-group">
+                        <label for="base-network">Base Network:</label>
+                        <input type="text" id="base-network" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="required-subnets">Required Number of Subnets:</label>
+                        <input type="number" id="required-subnets" placeholder="e.g., 8" min="1">
+                    </div>
+                    <button type="submit" id="calculate-subnet-from-subnets">Calculate</button>
+                </form>
+                <div id="subnet-from-subnets-results" class="results-container"></div>
+            </section>
+
+            <!-- VLSM Calculator Tool -->
+            <section id="vlsm-calculator-section" class="tool-section">
+                <h2>VLSM Calculator</h2>
+                <form id="vlsm-calculator-form">
+                    <div class="input-group">
+                        <label for="vlsm-base-network">Base Network:</label>
+                        <input type="text" id="vlsm-base-network" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="vlsm-subnet-requirements">Subnet Requirements (hosts per subnet, comma separated):</label>
+                        <input type="text" id="vlsm-subnet-requirements" placeholder="e.g., 50, 20, 10">
+                    </div>
+                    <button type="submit" id="calculate-vlsm">Calculate VLSM</button>
+                </form>
+                <div id="vlsm-calculator-results" class="results-container"></div>
+            </section>
+
+            <!-- IP Binary Converter Tool -->
+            <section id="ip-binary-converter-section" class="tool-section">
+                <h2>IP Binary Converter</h2>
+                <form id="ip-binary-converter-form">
+                    <div class="input-group">
+                        <label for="ip-binary-input">IP Address:</label>
+                        <input type="text" id="ip-binary-input" placeholder="e.g., 192.168.1.1">
+                    </div>
+                    <button type="submit" id="convert-ip-binary">Convert</button>
+                </form>
+                <div id="ip-binary-converter-results" class="results-container"></div>
+            </section>
+
+            <!-- OSPF Network Type Tool -->
+            <section id="ospf-network-type-section" class="tool-section">
+                <h2>OSPF Network Type Tool</h2>
+                <form id="ospf-network-type-form">
+                    <div class="input-group">
+                        <label for="ospf-network">Network Address:</label>
+                        <input type="text" id="ospf-network" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="ospf-mask">Subnet Mask:</label>
+                        <input type="text" id="ospf-mask" placeholder="e.g., 255.255.255.0 or /24">
+                    </div>
+                    <button type="submit" id="determine-ospf-type">Determine OSPF Type</button>
+                </form>
+                <div id="ospf-network-type-results" class="results-container"></div>
+            </section>
+
+            <!-- DHCP Scope Calculator Tool -->
+            <section id="dhcp-scope-calculator-section" class="tool-section">
+                <h2>DHCP Scope Calculator</h2>
+                <form id="dhcp-scope-calculator-form">
+                    <div class="input-group">
+                        <label for="dhcp-network">Network Address:</label>
+                        <input type="text" id="dhcp-network" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="dhcp-mask">Subnet Mask:</label>
+                        <input type="text" id="dhcp-mask" placeholder="e.g., 255.255.255.0 or /24">
+                    </div>
+                    <button type="submit" id="calculate-dhcp-scope">Calculate DHCP Scope</button>
+                </form>
+                <div id="dhcp-scope-calculator-results" class="results-container"></div>
+            </section>
+
+            <!-- Hex/IP Converter Tool -->
+            <section id="hex-ip-converter-section" class="tool-section">
+                <h2>Hex/IP Converter</h2>
+                <form id="hex-ip-converter-form">
+                    <div class="input-group">
+                        <label for="hex-ip-input">Hexadecimal:</label>
+                        <input type="text" id="hex-ip-input" placeholder="e.g., C0A80101">
+                    </div>
+                    <button type="submit" id="convert-hex-ip">Convert</button>
+                </form>
+                <div id="hex-ip-converter-results" class="results-container"></div>
+            </section>
+
+            <!-- NAT Calculator Tool -->
+            <section id="nat-calculator-section" class="tool-section">
+                <h2>NAT Calculator</h2>
+                <form id="nat-calculator-form">
+                    <div class="input-group">
+                        <label for="nat-inside-ip">Inside Local IP:</label>
+                        <input type="text" id="nat-inside-ip" placeholder="e.g., 192.168.1.10">
+                    </div>
+                    <div class="input-group">
+                        <label for="nat-outside-ip">Outside Global IP:</label>
+                        <input type="text" id="nat-outside-ip" placeholder="e.g., 203.0.113.10">
+                    </div>
+                    <div class="input-group">
+                        <label for="nat-type">NAT Type:</label>
+                        <select id="nat-type">
+                            <option value="static">Static NAT</option>
+                            <option value="dynamic">Dynamic NAT</option>
+                            <option value="pat">PAT (Port Address Translation)</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="calculate-nat">Calculate NAT</button>
+                </form>
+                <div id="nat-calculator-results" class="results-container"></div>
+            </section>
+
+            <!-- IPv4/IPv6 Converter Tool -->
+            <section id="ipv4-ipv6-converter-section" class="tool-section">
+                <h2>IPv4/IPv6 Converter</h2>
+                <form id="ipv4-ipv6-converter-form">
+                    <div class="input-group">
+                        <label for="ipv4-input">IPv4 Address:</label>
+                        <input type="text" id="ipv4-input" placeholder="e.g., 192.168.1.1">
+                    </div>
+                    <button type="submit" id="convert-ipv4-ipv6">Convert to IPv6</button>
+                </form>
+                <div id="ipv4-ipv6-converter-results" class="results-container"></div>
+            </section>
+
+            <!-- Network Speed Calculator Tool -->
+            <section id="network-speed-calculator-section" class="tool-section">
+                <h2>Network Speed Calculator</h2>
+                <form id="network-speed-calculator-form">
+                    <div class="input-group">
+                        <label for="data-size">Data Size:</label>
+                        <input type="number" id="data-size" placeholder="e.g., 100" min="0.1" step="0.1">
+                        <select id="data-unit">
+                            <option value="MB">MB</option>
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="bandwidth">Bandwidth:</label>
+                        <input type="number" id="bandwidth" placeholder="e.g., 100" min="0.1" step="0.1">
+                        <select id="bandwidth-unit">
+                            <option value="Mbps">Mbps</option>
+                            <option value="Gbps">Gbps</option>
+                            <option value="Tbps">Tbps</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="calculate-network-speed">Calculate Transfer Time</button>
+                </form>
+                <div id="network-speed-calculator-results" class="results-container"></div>
+            </section>
+
+            <!-- TCP Flags Calculator Tool -->
+            <section id="tcp-flags-calculator-section" class="tool-section">
+                <h2>TCP Flags Calculator</h2>
+                <form id="tcp-flags-calculator-form">
+                    <div class="input-group">
+                        <label for="tcp-flags-hex">TCP Flags (Hex):</label>
+                        <input type="text" id="tcp-flags-hex" placeholder="e.g., 0x02" maxlength="4">
+                    </div>
+                    <div class="tcp-flags-checkboxes">
+                        <label><input type="checkbox" id="urg-flag"> URG (Urgent)</label>
+                        <label><input type="checkbox" id="ack-flag"> ACK (Acknowledgment)</label>
+                        <label><input type="checkbox" id="psh-flag"> PSH (Push)</label>
+                        <label><input type="checkbox" id="rst-flag"> RST (Reset)</label>
+                        <label><input type="checkbox" id="syn-flag"> SYN (Synchronize)</label>
+                        <label><input type="checkbox" id="fin-flag"> FIN (Finish)</label>
+                    </div>
+                    <button type="submit" id="calculate-tcp-flags">Calculate TCP Flags</button>
+                </form>
+                <div id="tcp-flags-calculator-results" class="results-container"></div>
+            </section>
+
+            <!-- Network Troubleshooter Tool -->
+            <section id="network-troubleshooter-section" class="tool-section">
+                <h2>Network Troubleshooter</h2>
+                <form id="network-troubleshooter-form">
+                    <div class="input-group">
+                        <label for="troubleshoot-ip">IP Address:</label>
+                        <input type="text" id="troubleshoot-ip" placeholder="e.g., 192.168.1.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="troubleshoot-mask">Subnet Mask:</label>
+                        <input type="text" id="troubleshoot-mask" placeholder="e.g., 255.255.255.0 or /24">
+                    </div>
+                    <div class="input-group">
+                        <label for="troubleshoot-gateway">Gateway:</label>
+                        <input type="text" id="troubleshoot-gateway" placeholder="e.g., 192.168.1.1">
+                    </div>
+                    <button type="submit" id="troubleshoot-network">Troubleshoot</button>
+                </form>
+                <div id="network-troubleshooter-results" class="results-container"></div>
+            </section>
+
+            <!-- Route Summarization Tool -->
+            <section id="route-summarization-section" class="tool-section">
+                <h2>Route Summarization (CIDR Aggregation)</h2>
+                <form id="route-summarization-form">
+                    <div class="input-group">
+                        <label for="networks-list">Networks (one per line):</label>
+                        <textarea id="networks-list" placeholder="192.168.1.0/24&#10;192.168.2.0/24&#10;192.168.3.0/24" rows="6"></textarea>
+                    </div>
+                    <button type="submit" id="calculate-summarization">Summarize Routes</button>
+                </form>
+                <div id="route-summarization-results" class="results-container"></div>
+            </section>
+
+            <!-- ACL Wildcard Generator -->
+            <section id="acl-wildcard-section" class="tool-section">
+                <h2>ACL-Ready Wildcard Mask Generator</h2>
+                <form id="acl-wildcard-form">
+                    <div class="input-group">
+                        <label for="acl-network">Network:</label>
+                        <input type="text" id="acl-network" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="acl-mask">Subnet Mask:</label>
+                        <input type="text" id="acl-mask" placeholder="e.g., 255.255.255.0 or /24">
+                    </div>
+                    <button type="submit" id="generate-acl">Generate ACL Wildcard</button>
+                </form>
+                <div id="acl-wildcard-results" class="results-container"></div>
+            </section>
+
+            <!-- Quiz Mode -->
+            <section id="quiz-mode-section" class="tool-section">
+                <h2>Subnetting Quiz Mode</h2>
+                <div id="quiz-container">
+                    <div id="quiz-question" class="quiz-question"></div>
+                    <div id="quiz-options" class="quiz-options"></div>
+                    <div id="quiz-feedback" class="quiz-feedback"></div>
+                    <button id="next-question" class="quiz-btn">Next Question</button>
+                    <div id="quiz-score" class="quiz-score"></div>
+                </div>
+            </section>
+
+            <!-- Subnet Allocation Table -->
+            <section id="subnet-table-section" class="tool-section">
+                <h2>Subnet Allocation Table</h2>
+                <form id="subnet-table-form">
+                    <div class="input-group">
+                        <label for="table-network">Base Network:</label>
+                        <input type="text" id="table-network" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="table-mask">Subnet Mask:</label>
+                        <input type="text" id="table-mask" placeholder="e.g., 255.255.255.0 or /24">
+                    </div>
+                    <div class="input-group">
+                        <label for="max-subnets">Max Subnets to Display:</label>
+                        <input type="number" id="max-subnets" value="16" min="1" max="256">
+                    </div>
+                    <button type="submit" id="generate-table">Generate Table</button>
+                </form>
+                <div id="subnet-table-results" class="results-container"></div>
+            </section>
+
+            <!-- Settings Panel -->
+            <!-- Removed Settings Panel as per user request -->
+
+            <!-- Help & Tips Section -->
+            <section id="help-tips-section" class="tool-section">
+                <h2>Help & Tips</h2>
+                <div class="results-container">
+                    <div class="result-card">
+                        <h3>Subnetting Best Practices</h3>
+                        <ul>
+                            <li><strong>Plan Ahead:</strong> Always calculate your subnet requirements before implementing</li>
+                            <li><strong>Use VLSM:</strong> Variable Length Subnet Masking saves IP addresses</li>
+                            <li><strong>Document Everything:</strong> Keep track of your subnet allocations</li>
+                            <li><strong>Leave Room for Growth:</strong> Plan for future expansion</li>
+                            <li><strong>Security First:</strong> Use subnets to implement security zones</li>
+                        </ul>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Common Subnet Masks</h3>
+                        <table class="subnet-table">
+                            <thead>
+                                <tr>
+                                    <th>CIDR</th>
+                                    <th>Subnet Mask</th>
+                                    <th>Hosts</th>
+                                    <th>Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>/8</td><td>255.0.0.0</td><td>16,777,214</td><td>Large enterprise</td></tr>
+                                <tr><td>/16</td><td>255.255.0.0</td><td>65,534</td><td>Medium network</td></tr>
+                                <tr><td>/24</td><td>255.255.255.0</td><td>254</td><td>Small office</td></tr>
+                                <tr><td>/25</td><td>255.255.255.128</td><td>126</td><td>Point-to-point</td></tr>
+                                <tr><td>/26</td><td>255.255.255.192</td><td>62</td><td>Smaller subnets</td></tr>
+                                <tr><td>/27</td><td>255.255.255.224</td><td>30</td><td>DMZ segments</td></tr>
+                                <tr><td>/28</td><td>255.255.255.240</td><td>14</td><td>Point-to-point</td></tr>
+                                <tr><td>/29</td><td>255.255.255.248</td><td>6</td><td>Small point-to-point</td></tr>
+                                <tr><td>/30</td><td>255.255.255.252</td><td>2</td><td>Router links</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Network Troubleshooting Checklist</h3>
+                        <ol>
+                            <li><strong>Physical Layer:</strong> Check cables, connectors, and link lights</li>
+                            <li><strong>IP Configuration:</strong> Verify IP address, subnet mask, and gateway</li>
+                            <li><strong>Connectivity:</strong> Test ping to local gateway and remote hosts</li>
+                            <li><strong>DNS:</strong> Check DNS server configuration and resolution</li>
+                            <li><strong>Firewall:</strong> Verify firewall rules aren't blocking traffic</li>
+                            <li><strong>Routing:</strong> Check routing table and default gateway</li>
+                            <li><strong>VLANs:</strong> Ensure proper VLAN configuration if applicable</li>
+                        </ol>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>IPv6 Quick Reference</h3>
+                        <ul>
+                            <li><strong>Address Types:</strong> Unicast, Multicast, Anycast</li>
+                            <li><strong>Subnetting:</strong> Uses /64 for standard subnets</li>
+                            <li><strong>Link-Local:</strong> FE80::/10 for local communication</li>
+                            <li><strong>Global Unicast:</strong> 2000::/3 for internet routing</li>
+                            <li><strong>Loopback:</strong> ::1 (equivalent to 127.0.0.1)</li>
+                            <li><strong>Unspecified:</strong> :: (equivalent to 0.0.0.0)</li>
+                        </ul>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Performance Optimization Tips</h3>
+                        <ul>
+                            <li><strong>Minimize Broadcasts:</strong> Use appropriate subnet sizes</li>
+                            <li><strong>Route Summarization:</strong> Reduce routing table size</li>
+                            <li><strong>VLAN Segmentation:</strong> Isolate broadcast domains</li>
+                            <li><strong>Quality of Service:</strong> Prioritize critical traffic</li>
+                            <li><strong>Monitor Usage:</strong> Track bandwidth utilization</li>
+                            <li><strong>Redundant Paths:</strong> Implement failover mechanisms</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Panel -->
+            <!-- Removed History Panel as per user request -->
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+    <script src="extra-features.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Subnetting Basics - Beginner's Guide</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="subnetting-info.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Subnetting Basics - Beginner's Guide</h1>
+            <nav>
+                <a href="index.html">IPv4 Calculator</a> |
+                <a href="ipv6.html">IPv6 Calculator</a> |
+                <a href="extra-features.html">Advanced Tools</a> |
+                <a href="subnetting-info.html" class="active">Subnetting Basics</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h2>🔹 1. What is Subnetting?</h2>
+                <p>
+                    Splitting a large IP network into smaller subnets.<br>
+                    Makes the network faster, secure, and manageable.<br>
+                    Each subnet works like a mini-network inside the bigger one.
+                </p>
+            </section>
+
+            <section>
+                <h2>🔹 2. Why Subnetting is Needed?</h2>
+                <ul>
+                    <li>Efficient use of IPs → avoids wasting addresses</li>
+                    <li>Reduces broadcast traffic → only affects devices in that subnet</li>
+                    <li>Organizes networks → departments, branches, labs, etc.</li>
+                    <li>Improves security → one subnet can’t easily access another without routing</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🔹 3. IP Address Structure</h2>
+                <p>
+                    An IP has 2 parts:<br>
+                    <strong>Network Part</strong> → tells which network the device is in.<br>
+                    <strong>Host Part</strong> → unique number for each device inside that network.
+                </p>
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    IP: 192.168.1.10<br>
+                    Mask: 255.255.255.0 (/24)<br>
+                    Network: 192.168.1.0<br>
+                    Host: 10
+                </div>
+            </section>
+
+            <section>
+                <h2>🔹 4. Subnet Mask Basics</h2>
+                <p>
+                    Subnet mask separates network and host portions.<br>
+                    Written in two ways:
+                </p>
+                <ul>
+                    <li><strong>Dotted Decimal</strong> → 255.255.255.0</li>
+                    <li><strong>CIDR</strong> → /24</li>
+                </ul>
+                <p>👉 Think of the 1’s in binary = Network, 0’s = Hosts.</p>
+            </section>
+
+            <section>
+                <h2>🔹 5. Common Subnet Masks (Easy Table)</h2>
+                <table class="subnet-table">
+                    <thead>
+                        <tr>
+                            <th>CIDR</th>
+                            <th>Mask</th>
+                            <th>Block Size</th>
+                            <th>Usable Hosts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>/24</td>
+                            <td>255.255.255.0</td>
+                            <td>256</td>
+                            <td>254</td>
+                        </tr>
+                        <tr>
+                            <td>/25</td>
+                            <td>255.255.255.128</td>
+                            <td>128</td>
+                            <td>126</td>
+                        </tr>
+                        <tr>
+                            <td>/26</td>
+                            <td>255.255.255.192</td>
+                            <td>64</td>
+                            <td>62</td>
+                        </tr>
+                        <tr>
+                            <td>/27</td>
+                            <td>255.255.255.224</td>
+                            <td>32</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>/28</td>
+                            <td>255.255.255.240</td>
+                            <td>16</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>/29</td>
+                            <td>255.255.255.248</td>
+                            <td>8</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>/30</td>
+                            <td>255.255.255.252</td>
+                            <td>4</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>👉 Use this chart to quickly pick a subnet.</p>
+            </section>
+
+            <section>
+                <h2>🔹 6. Key Terms</h2>
+                <ul>
+                    <li><strong>Network ID</strong> → First address (not for devices).</li>
+                    <li><strong>Broadcast Address</strong> → Last address (used to talk to all).</li>
+                    <li><strong>First Usable IP</strong> → Network ID + 1.</li>
+                    <li><strong>Last Usable IP</strong> → Broadcast – 1.</li>
+                    <li><strong>Usable Hosts</strong> → Total addresses – 2.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🔹 7. Easy Subnetting Formula</h2>
+                <p><strong>Hosts = 2^(host bits) – 2</strong></p>
+                <p><strong>Subnets = 2^(borrowed bits)</strong></p>
+                <p><strong>Block Size = 256 – last mask octet</strong></p>
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    IP: 192.168.1.0/26<br>
+                    Mask = 255.255.255.192<br>
+                    Host bits = 6 → Hosts = 2^6 – 2 = 62<br>
+                    Block Size = 256 – 192 = 64<br>
+                    Subnets = 4
+                </div>
+            </section>
+
+            <section>
+                <h2>🔹 8. Private IP Ranges (for LANs)</h2>
+                <ul>
+                    <li><strong>Class A</strong> → 10.0.0.0 – 10.255.255.255</li>
+                    <li><strong>Class B</strong> → 172.16.0.0 – 172.31.255.255</li>
+                    <li><strong>Class C</strong> → 192.168.0.0 – 192.168.255.255</li>
+                </ul>
+                <p>👉 These IPs don’t go to internet directly (need NAT).</p>
+            </section>
+
+            <section>
+                <h2>🔹 9. Quick Examples</h2>
+                <div class="example-box">
+                    <strong>Example 1:</strong><br>
+                    IP: 192.168.1.20/24<br>
+                    Network: 192.168.1.0<br>
+                    Broadcast: 192.168.1.255<br>
+                    Range: 192.168.1.1 – 192.168.1.254<br>
+                    Hosts: 254
+                </div>
+                <div class="example-box">
+                    <strong>Example 2:</strong><br>
+                    IP: 10.0.5.130/26<br>
+                    Block Size = 64 → Subnets: 0, 64, 128, 192<br>
+                    130 belongs to 10.0.5.128/26<br>
+                    Network: 10.0.5.128<br>
+                    Broadcast: 10.0.5.191<br>
+                    Range: 129 – 190<br>
+                    Hosts: 62
+                </div>
+            </section>
+
+            <section>
+                <h2>🔹 10. Tips for Beginners</h2>
+                <ul>
+                    <li>Always subtract 2 hosts (network + broadcast).</li>
+                    <li>Remember block sizes (128, 64, 32, 16, 8, 4, 2).</li>
+                    <li>Practice with Class C networks first (easiest).</li>
+                    <li>Use a subnetting table or chart during learning.</li>
+                    <li>With practice → you’ll calculate without binary.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
